@@ -16,7 +16,7 @@ if($option == 'GetOrigin')
 
 if($option == 'GetDest')
 {
-	$originCode = $_GET['origin'];
+	$originCode = $_GET['Origin'];
 
 	$url = "https://intranet.ktmb.com.my/e-ticket/Ajax/GetOriginDest.aspx?Origin=".$originCode;
 

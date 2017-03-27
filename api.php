@@ -1,6 +1,7 @@
 <?php
 /*
 	Codes for fetching data from KTMB E-Ticket Page
+	Needs to fetch the page using PHP, because KTMB website does not enable CORS for AJAX call from foreign Domains.
 */
 
 $option = (isset($_GET['option'])) ? $_GET['option'] : '';
@@ -40,7 +41,16 @@ if($option == 'GetTrain')
 
 if($option == 'GetCoach')
 {
+	$originCode = $_GET['Origin'];
+	$destCode = $_GET['Destination'];
+	$date = $_GET['Date'];
+	$train = $_GET['Train'];
 
+	$url = "https://intranet.ktmb.com.my/e-ticket/Ajax/CoachList.aspx?Origin=".$originCode."&Destination=".$destCode."&Tarikh=".$date."&Train=".$train;
+
+    $result = file_get_contents($url);
+
+    echo $result;
 }
 
 

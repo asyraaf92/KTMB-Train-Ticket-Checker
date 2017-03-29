@@ -1,5 +1,8 @@
 $(document).ready(function() {
 
+	// initialize select box
+    $('select').material_select();
+
 	// populate Origin select box
 	$.getJSON("./api.php?option=GetOrigin", function(data){
 		// show loading
@@ -29,8 +32,40 @@ $(document).ready(function() {
 		$('.se-pre-con').fadeOut('slow');
     });
 
-	// initialize select box
-    $('select').material_select();
+	// populate Destination select box
+	$('#originSelect').change(function(){
+		var originCode = $('#originSelect').val();
+
+		$.getJSON("./api.php?option=GetDest&Origin="+originCode, function(data){
+			// show loading
+			$('.se-pre-con').fadeIn('slow');
+
+			var states = "";
+	        $.each(data, function(state, obj){
+	        	var up = "<optgroup label='"+state+"'>";
+	        	var options= "";
+
+	        	for(var i=0;i<obj.length;i++)
+	        	{
+	        		options += "<option value='"+obj[i].Code+"'>"+obj[i].Nama+"</option>";
+	        	}
+
+	        	var down = "</optgroup>";
+
+	        	states += up+options+down;
+	            
+	        });
+
+	        // append to select box
+	        $("#destSelect").append(states);
+	    	$('#destSelect').material_select();
+
+	    	// hide loading
+			$('.se-pre-con').fadeOut('slow');
+	    });
+	    //alert(originCode);
+	});
+
 
     // initialize datepicker
 	$('.datepicker').pickadate({

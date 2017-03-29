@@ -93,6 +93,12 @@ $(document).ready(function() {
 	    });
 	});
 
+	// ------------- Focus to date picker and show message to select date ---------------
+	$('#destSelect').change(function(){
+		$('#datepicker').focus();
+		Materialize.toast('Please choose the travel date', 2000);
+	});
+
 
 	// ------------------ Get train list ------------------
 	$('#datepicker').change(function(){

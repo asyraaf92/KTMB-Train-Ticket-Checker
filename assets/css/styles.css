@@ -1,0 +1,24 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.material-icons {
+    text-rendering: optimizeLegibility;
+}
+
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../images/squares.svg) center no-repeat rgba(255,255,255,.6);
+    display: none;
+}

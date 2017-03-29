@@ -34,6 +34,11 @@ $(document).ready(function() {
 
 	// populate Destination select box
 	$('#originSelect').change(function(){
+
+		// clear previous data before append new one
+		$('#destSelect').empty();
+		$('#destSelect').append('<option value="" disabled selected>Select Destination</option>');
+
 		var originCode = $('#originSelect').val();
 
 		$.getJSON("./api.php?option=GetDest&Origin="+originCode, function(data){
@@ -63,7 +68,6 @@ $(document).ready(function() {
 	    	// hide loading
 			$('.se-pre-con').fadeOut('slow');
 	    });
-	    //alert(originCode);
 	});
 
 

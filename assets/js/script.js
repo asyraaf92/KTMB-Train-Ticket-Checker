@@ -48,6 +48,8 @@ $(document).ready(function() {
 
     	// hide loading
 		$('.se-pre-con').fadeOut('slow');
+
+		Materialize.toast('Origins loaded.', 2000);
     });
 
 
@@ -86,6 +88,8 @@ $(document).ready(function() {
 
 	    	// hide loading
 			$('.se-pre-con').fadeOut('slow');
+
+			Materialize.toast('Destinations loaded.', 2000);
 	    });
 	});
 
@@ -97,15 +101,14 @@ $(document).ready(function() {
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();
 
-		if(originCode == null || destCode == null)
+		if(originCode != null || destCode != null)
 		{
-			alert("select all first");
+			Materialize.toast('Validation pass.', 2000);
 		}
 		else
 		{
-			alert("yay");
+			Materialize.toast('Error!', 2000);
 		}
-
 
 	});
 

@@ -3,7 +3,25 @@ $(document).ready(function() {
 	// initialize select box
     $('select').material_select();
 
-	// populate Origin select box
+    // initialize datepicker
+	$('.datepicker').pickadate({
+		onSet: function( arg ){
+	        if ( 'select' in arg ){ //prevent closing on selecting month/year
+	            this.close();
+	        }
+	    },
+		onClose: function(){
+	        $(document.activeElement).blur()
+	    },
+		selectMonths: true, // Creates a dropdown to control month
+		selectYears: 15, // Creates a dropdown of 15 years to control year
+		format: 'dd-mmm-yyyy',
+	});
+
+
+	// ---------------------- API PROCESSES ---------------------------
+
+	// ------------------ Populate Origin select box ------------------
 	$.getJSON("./api.php?option=GetOrigin", function(data){
 		// show loading
 		$('.se-pre-con').fadeIn('slow');
@@ -32,7 +50,8 @@ $(document).ready(function() {
 		$('.se-pre-con').fadeOut('slow');
     });
 
-	// populate Destination select box
+
+	// ------------------ Populate Destination select box ------------------
 	$('#originSelect').change(function(){
 
 		// clear previous data before append new one
@@ -71,16 +90,23 @@ $(document).ready(function() {
 	});
 
 
-    // initialize datepicker
-	$('.datepicker').pickadate({
-		onClose: function(){
-	        $(document.activeElement).blur()
-	    },
-		selectMonths: true, // Creates a dropdown to control month
-		selectYears: 15, // Creates a dropdown of 15 years to control year
-		format: 'dd-mmm-yyyy',
+	// ------------------ Get train list ------------------
+	$('#datepicker').change(function(){
+
+		var originCode = $('#originSelect').val();
+		var destCode = $('#destSelect').val();
+		var date = $('#datepicker').val();
+
+		if(originCode == null || destCode == null)
+		{
+			alert("select all first");
+		}
+		else
+		{
+			alert("yay");
+		}
+
+
 	});
-
-
 
 });

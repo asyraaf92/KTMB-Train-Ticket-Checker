@@ -129,7 +129,7 @@ $(document).ready(function() {
 		        	
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
-									'<div class="card">'+
+									'<div class="card animated fadeInLeft">'+
 										'<div class="card-content">'+
 											'<span class="card-title">('+trainnum+') '+trainname+'</span>'+
 											'Departure: '+ departure + "<br>" +

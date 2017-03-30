@@ -114,6 +114,9 @@ $(document).ready(function() {
 				// show loading
 				$('.se-pre-con').fadeIn('slow');
 
+				var sep = "<br><hr><br>";
+				var cards = "";
+
 		        $.each(data, function(index, obj){
 		        	
 		        	var arrival = obj.Arrival;
@@ -121,9 +124,28 @@ $(document).ready(function() {
 		        	var trainnum = obj.TMT_TNM_NUMBER;
 		        	var trainname = obj.TNM_NAME;
 		        	
-		        	console.log(arrival+"\n"+departure+"\n"+trainnum+"\n"+trainname+"\n\n");
+		        	//console.log(arrival+"\n"+departure+"\n"+trainnum+"\n"+trainname+"\n\n");
+		        	
+		        	/*cards += '<div class="row">'+
+								'<div class="col s12">'+
+									'<div class="card">'+
+										'<div class="card-content">'+
+											'<span class="card-title">('+trainnum+') '+trainname+'</span>'+
+											'Departure: '+ departure + "<br>"
+											'Arrival: ' + arrival +
+										'</div>'+
+										'<div class="card-action">'+
+											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'"><i class="material-icons left">view_list</i>Show Coach</button>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</div>';*/
+					cards += arrival+"<br>"+departure+"<br>"+trainnum+"<br>"+trainname+"<br><br>";
 		            
 		        });
+
+		        // append train list
+		        $('#trainList').append(cards);
 
 		    	// hide loading
 				$('.se-pre-con').fadeOut('slow');

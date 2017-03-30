@@ -124,14 +124,12 @@ $(document).ready(function() {
 		        	var trainnum = obj.TMT_TNM_NUMBER;
 		        	var trainname = obj.TNM_NAME;
 		        	
-		        	//console.log(arrival+"\n"+departure+"\n"+trainnum+"\n"+trainname+"\n\n");
-		        	
-		        	/*cards += '<div class="row">'+
+		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
 									'<div class="card">'+
 										'<div class="card-content">'+
 											'<span class="card-title">('+trainnum+') '+trainname+'</span>'+
-											'Departure: '+ departure + "<br>"
+											'Departure: '+ departure + "<br>" +
 											'Arrival: ' + arrival +
 										'</div>'+
 										'<div class="card-action">'+
@@ -139,8 +137,7 @@ $(document).ready(function() {
 										'</div>'+
 									'</div>'+
 								'</div>'+
-							'</div>';*/
-					cards += arrival+"<br>"+departure+"<br>"+trainnum+"<br>"+trainname+"<br><br>";
+							'</div>';
 		            
 		        });
 

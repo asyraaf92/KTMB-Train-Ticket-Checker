@@ -105,7 +105,7 @@ $(document).ready(function() {
 
 		// clear previous train list before append new
 		$('#trainList').empty();
-		
+
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();
@@ -145,7 +145,7 @@ $(document).ready(function() {
 		        });
 
 		        // append train list
-		        $('#trainList').append(cards);
+		        $('#trainList').append(sep+cards);
 
 		    	// hide loading
 				$('.se-pre-con').fadeOut('slow');

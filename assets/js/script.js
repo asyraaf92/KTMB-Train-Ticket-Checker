@@ -119,6 +119,7 @@ $(document).ready(function() {
 
 				var sep = "<br><hr><br>";
 				var cards = "";
+				var delay = 0.4;
 
 		        $.each(data, function(index, obj){
 		        	
@@ -129,7 +130,7 @@ $(document).ready(function() {
 		        	
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
-									'<div class="card animated fadeInLeft">'+
+									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
 										'<div class="card-content">'+
 											'<span class="card-title">('+trainnum+') '+trainname+'</span>'+
 											'Departure: '+ departure + "<br>" +
@@ -141,6 +142,9 @@ $(document).ready(function() {
 									'</div>'+
 								'</div>'+
 							'</div>';
+
+					// increase delay time for each cards
+					delay += 0.4; 
 		            
 		        });
 

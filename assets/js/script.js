@@ -103,6 +103,9 @@ $(document).ready(function() {
 	// ------------------ Get train list ------------------
 	$('#datepicker').change(function(){
 
+		// clear previous train list before append new
+		$('#trainList').empty();
+		
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();

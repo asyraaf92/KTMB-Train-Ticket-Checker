@@ -109,7 +109,27 @@ $(document).ready(function() {
 
 		if(originCode != null || destCode != null)
 		{
-			Materialize.toast('Validation pass.', 2000);
+			//Materialize.toast('Validation pass.', 2000);
+			$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
+				// show loading
+				$('.se-pre-con').fadeIn('slow');
+
+		        $.each(data, function(index, obj){
+		        	
+		        	var arrival = obj.Arrival;
+		        	var departure = obj.Departure;
+		        	var trainnum = obj.TMT_TNM_NUMBER;
+		        	var trainname = obj.TNM_NAME;
+		        	
+		        	console.log(arrival+"\n"+departure+"\n"+trainnum+"\n"+trainname+"\n\n");
+		            
+		        });
+
+		    	// hide loading
+				$('.se-pre-con').fadeOut('slow');
+
+				Materialize.toast('Trains and Coaches loaded.', 2000);
+		    });
 		}
 		else
 		{

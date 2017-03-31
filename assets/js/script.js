@@ -98,6 +98,7 @@ $(document).ready(function() {
 
 	// ------------- Focus to date picker and show message to select date ---------------
 	$('#destSelect').change(function(){
+		$("#searchBar").removeClass('animated'); // remove animation, this cause a bug
 		$('#datepicker').focus();
 		Materialize.toast('Please choose the travel date', 2000);
 	});

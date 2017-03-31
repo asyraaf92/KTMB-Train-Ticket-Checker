@@ -88,8 +88,11 @@ $(document).ready(function() {
 	            
 	        });
 
+	        // add additional options, temp fix for select box overlap under footer bug.
+        	var addop = '<option value="" disabled></option><option value="" disabled></option>';
+
 	        // append to select box
-	        $("#destSelect").append(states);
+	        $("#destSelect").append(states+addop);
 	    	$('#destSelect').material_select();
 
 	    	// hide loading

@@ -135,9 +135,15 @@ $(document).ready(function() {
 								'<div class="col s12">'+
 									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
 										'<div class="card-content">'+
-											'<span class="card-title">('+trainnum+') '+trainname+'</span>'+
-											'Departure: '+ departure + "<br>" +
-											'Arrival: ' + arrival +
+											'<span class="card-title"><b>('+trainnum+') '+trainname+'</b></span>'+
+											'<table>'+
+												'<tr>'+
+													'<th>Departure</th><td> : </td><td>'+ departure + '</td>'+
+												'</tr>'+
+												'<tr>'+
+													'<th>Arrival</th><td> : </td><td>' + arrival + '</td>'+
+												'</tr>'+
+											'</table>'+
 										'</div>'+
 										'<div class="card-action">'+
 											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'"><i class="material-icons left">view_list</i>Show Coach</button>'+

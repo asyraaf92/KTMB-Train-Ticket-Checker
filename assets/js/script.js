@@ -188,7 +188,16 @@ $(document).ready(function() {
 	        $.each(data, function(index, obj){
 	        	
 	        	var details = obj.Keterangan;
-	        	table += "<table class='responsive-table'>"+details+"</table>";
+	        	var coachpic = obj.Gambar;
+
+	        	table += "<table class='responsive-table'>"+
+	        				"<tr>"+
+					   			"<td colspan='3' style='text-align: center'>"+
+					   				"<img src='https://intranet.ktmb.com.my/e-ticket/Images/Coach/"+coachpic+"' class='responsive-img'/>"+
+					   			"</td>"+
+					   		"</tr>"+
+	        				details+
+	        			"</table>";
 	            
 	        });
 

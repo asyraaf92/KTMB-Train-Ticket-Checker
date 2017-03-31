@@ -115,7 +115,6 @@ $(document).ready(function() {
 
 		if(originCode != null || destCode != null)
 		{
-			//Materialize.toast('Validation pass.', 2000);
 			$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
 				// show loading
 				$('.se-pre-con').fadeIn('slow');
@@ -170,7 +169,44 @@ $(document).ready(function() {
 
 	// ------------------ Show coach details ------------------
 	$(document).on('click','#showCoach',function(){
+
+		var originCode = $('#originSelect').val();
+		var destCode = $('#destSelect').val();
+		var date = $('#datepicker').val();
+		var train = $(this).val();
+
+		// show progress bar
+		$('.progress').fadeIn('slow');
+
+		// open modal
 		$('#coachModal').modal('open');
+
+		$.getJSON("./api.php?option=GetCoach&Origin="+originCode+"&Destination="+destCode+"&Date="+date+"&Train="+train, function(data){
+
+			var table = "";
+			var delay = 0.4;
+
+	        $.each(data, function(index, obj){
+	        	
+	        	var details = obj.Keterangan;
+	        	table += "<table>"+details+"</table>";
+	        	
+				// increase delay time for each cards
+				delay += 0.4; 
+	            
+	        });
+
+	        // hide progress bar
+	        $('.progress').fadeOut('slow');
+
+	        // append coach detail
+	        $('#coachDetail').append(table);
+
+			Materialize.toast('Coach details loaded.', 2000);
+	    });
+
+
+		
 	});
 
 });

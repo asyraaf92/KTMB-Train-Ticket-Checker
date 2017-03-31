@@ -200,7 +200,7 @@ $(document).ready(function() {
 					   			"</td>"+
 					   		"</tr>"+
 	        				details+
-	        			"</table>";
+	        			"</table><br><hr><br>";
 	            
 	        });
 

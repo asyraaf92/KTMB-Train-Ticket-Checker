@@ -18,6 +18,9 @@ $(document).ready(function() {
 		format: 'dd-mmm-yyyy',
 	});
 
+	// initialize modal
+	$('.modal').modal();
+
 
 	// ---------------------- API PROCESSES ---------------------------
 
@@ -162,6 +165,12 @@ $(document).ready(function() {
 			Materialize.toast('Error!', 2000);
 		}
 
+	});
+
+
+	// ------------------ Show coach details ------------------
+	$(document).on('click','#showCoach',function(){
+		$('#coachModal').modal('open');
 	});
 
 });

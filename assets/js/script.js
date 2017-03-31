@@ -169,6 +169,8 @@ $(document).ready(function() {
 
 	// ------------------ Show coach details ------------------
 	$(document).on('click','#showCoach',function(){
+		// empty/clear previous data before append new one
+		$('#coachDetail').empty();
 
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();

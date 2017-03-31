@@ -184,15 +184,11 @@ $(document).ready(function() {
 		$.getJSON("./api.php?option=GetCoach&Origin="+originCode+"&Destination="+destCode+"&Date="+date+"&Train="+train, function(data){
 
 			var table = "";
-			var delay = 0.4;
 
 	        $.each(data, function(index, obj){
 	        	
 	        	var details = obj.Keterangan;
-	        	table += "<table>"+details+"</table>";
-	        	
-				// increase delay time for each cards
-				delay += 0.4; 
+	        	table += "<table class='responsive-table'>"+details+"</table>";
 	            
 	        });
 

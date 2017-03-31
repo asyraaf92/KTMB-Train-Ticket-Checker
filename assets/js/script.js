@@ -193,7 +193,7 @@ $(document).ready(function() {
 	        	var details = obj.Keterangan;
 	        	var coachpic = obj.Gambar;
 
-	        	table += "<table class='responsive-table'>"+
+	        	table += "<table>"+
 	        				"<tr>"+
 					   			"<td colspan='3' style='text-align: center'>"+
 					   				"<img src='https://intranet.ktmb.com.my/e-ticket/Images/Coach/"+coachpic+"' class='responsive-img'/>"+

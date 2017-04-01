@@ -52,12 +52,19 @@ $(document).ready(function() {
 	        // append to select box
 	        $("#originSelect").append(states+addop);
 	    	$('#originSelect').material_select();
-
-	    	// hide loading
+	    })
+	    .done(function() {
+			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
 			Materialize.toast('Origins loaded.', 2000);
-	    });
+		})
+		.fail(function() {
+			// hide loading
+			$('.se-pre-con').fadeOut('slow');
+
+			Materialize.toast('Error! Failed to load contents.', 2000);
+		});
 	}, 500); // set timeout to allow animation effects first, then execute this function
 	
 
@@ -97,12 +104,16 @@ $(document).ready(function() {
 	        // append to select box
 	        $("#destSelect").append(states+addop);
 	    	$('#destSelect').material_select();
-
-	    	// hide loading
+	    })
+	    .done(function() {
+			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
 			Materialize.toast('Destinations loaded.', 2000);
-	    });
+		})
+		.fail(function() {
+			Materialize.toast('Error! Failed to load contents.', 2000);
+		});
 	});
 
 	// ------------- Focus to date picker and show message to select date ---------------
@@ -169,16 +180,20 @@ $(document).ready(function() {
 
 		        // append train list
 		        $('#trainList').append(sep+cards);
-
-		    	// hide loading
+		    })
+			.done(function() {
+				// hide loading
 				$('.se-pre-con').fadeOut('slow');
 
 				Materialize.toast('Trains and Coaches loaded.', 2000);
-		    });
+			})
+			.fail(function() {
+				Materialize.toast('Error! Failed to load contents.', 2000);
+			});
 		}
 		else
 		{
-			Materialize.toast('Error!', 2000);
+			Materialize.toast('Error! Please select both Origin and Destination.', 2000);
 		}
 
 	});
@@ -220,14 +235,18 @@ $(document).ready(function() {
 	            
 	        });
 
-	        // hide progress bar
-	        $('.progress').fadeOut('slow');
-
 	        // append coach detail
 	        $('#coachDetail').append(table);
+	    })
+	    .done(function() {
+			// hide loading
+			$('.se-pre-con').fadeOut('slow');
 
 			Materialize.toast('Coach details loaded.', 2000);
-	    });
+		})
+		.fail(function() {
+			Materialize.toast('Error! Failed to load contents.', 2000);
+		});
 
 
 		

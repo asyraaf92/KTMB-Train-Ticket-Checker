@@ -25,42 +25,47 @@ $(document).ready(function() {
 	// ---------------------- API PROCESSES ---------------------------
 
 	// ------------------ Populate Origin select box ------------------
-	$.getJSON("./api.php?option=GetOrigin", function(data){
+	$(function(){
 		// show loading
 		$('.se-pre-con').fadeIn('slow');
 
-		var states = "";
-        $.each(data, function(state, obj){
-        	var up = "<optgroup label='"+state+"'>";
-        	var options= "";
+		$.getJSON("./api.php?option=GetOrigin", function(data){
+			var states = "";
+	        $.each(data, function(state, obj){
+	        	var up = "<optgroup label='"+state+"'>";
+	        	var options= "";
 
-        	for(var i=0;i<obj.length;i++)
-        	{
-        		options += "<option value='"+obj[i].Code+"'>"+obj[i].Nama+"</option>";
-        	}
+	        	for(var i=0;i<obj.length;i++)
+	        	{
+	        		options += "<option value='"+obj[i].Code+"'>"+obj[i].Nama+"</option>";
+	        	}
 
-        	var down = "</optgroup>";
+	        	var down = "</optgroup>";
 
-        	states += up+options+down;
-            
-        });
+	        	states += up+options+down;
+	            
+	        });
 
-        // add additional options, temp fix for select box overlap under footer bug.
-        var addop = '<option value="" disabled></option><option value="" disabled></option>';
+	        // add additional options, temp fix for select box overlap under footer bug.
+	        var addop = '<option value="" disabled></option><option value="" disabled></option>';
 
-        // append to select box
-        $("#originSelect").append(states+addop);
-    	$('#originSelect').material_select();
+	        // append to select box
+	        $("#originSelect").append(states+addop);
+	    	$('#originSelect').material_select();
 
-    	// hide loading
-		$('.se-pre-con').fadeOut('slow');
+	    	// hide loading
+			$('.se-pre-con').fadeOut('slow');
 
-		Materialize.toast('Origins loaded.', 2000);
-    });
+			Materialize.toast('Origins loaded.', 2000);
+	    });
+	});
+	
 
 
 	// ------------------ Populate Destination select box ------------------
 	$('#originSelect').change(function(){
+		// show loading
+		$('.se-pre-con').fadeIn('slow');
 
 		// clear previous data before append new one
 		$('#destSelect').empty();
@@ -69,9 +74,6 @@ $(document).ready(function() {
 		var originCode = $('#originSelect').val();
 
 		$.getJSON("./api.php?option=GetDest&Origin="+originCode, function(data){
-			// show loading
-			$('.se-pre-con').fadeIn('slow');
-
 			var states = "";
 	        $.each(data, function(state, obj){
 	        	var up = "<optgroup label='"+state+"'>";
@@ -112,6 +114,8 @@ $(document).ready(function() {
 
 	// ------------------ Get train list ------------------
 	$('#datepicker').change(function(){
+		// show loading
+		$('.se-pre-con').fadeIn('slow');
 
 		// clear previous train list before append new
 		$('#trainList').empty();
@@ -123,9 +127,6 @@ $(document).ready(function() {
 		if(originCode != null || destCode != null)
 		{
 			$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
-				// show loading
-				$('.se-pre-con').fadeIn('slow');
-
 				var sep = "<br><hr><br>";
 				var cards = "";
 				var delay = 0.4;

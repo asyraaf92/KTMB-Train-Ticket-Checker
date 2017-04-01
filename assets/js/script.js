@@ -57,13 +57,13 @@ $(document).ready(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Origins loaded.', 2000);
+			Materialize.toast('Origins loaded.', 2500, 'green');
 		})
 		.fail(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Error! Failed to load contents.', 2000);
+			Materialize.toast('Error! Failed to load contents.', 2500, 'red');
 		});
 
 		// remove animation class after animation executes. this cause a bug to date picker
@@ -113,13 +113,13 @@ $(document).ready(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Destinations loaded.', 2000);
+			Materialize.toast('Destinations loaded.', 2500, 'green');
 		})
 		.fail(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Error! Failed to load contents.', 2000);
+			Materialize.toast('Error! Failed to load contents.', 2500, 'red');
 		});
 	});
 
@@ -128,7 +128,7 @@ $(document).ready(function() {
 		// clear previous train list before append new
 		$('#trainList').empty();
 		$('#datepicker').focus();
-		Materialize.toast('Please choose the travel date', 2000);
+		Materialize.toast('Please choose the travel date', 2500);
 	});
 
 
@@ -191,13 +191,13 @@ $(document).ready(function() {
 				// hide loading
 				$('.se-pre-con').fadeOut('slow');
 
-				Materialize.toast('Trains and Coaches loaded.', 2000);
+				Materialize.toast('Trains and Coaches loaded.', 2500, 'green');
 			})
 			.fail(function() {
 				// hide loading
 				$('.se-pre-con').fadeOut('slow');
 
-				Materialize.toast('Error! Failed to load contents.', 2000);
+				Materialize.toast('Error! Failed to load contents.', 2500, 'red');
 			});
 		}
 		else
@@ -205,7 +205,7 @@ $(document).ready(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Error! Please select both Origin and Destination.', 2000);
+			Materialize.toast('Error! Please select both Origin and Destination.', 2500, 'red');
 		}
 
 	});
@@ -254,13 +254,13 @@ $(document).ready(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Coach details loaded.', 2000);
+			Materialize.toast('Coach details loaded.', 2500, 'green');
 		})
 		.fail(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
 
-			Materialize.toast('Error! Failed to load contents.', 2000);
+			Materialize.toast('Error! Failed to load contents.', 2500, 'red');
 		});
 
 

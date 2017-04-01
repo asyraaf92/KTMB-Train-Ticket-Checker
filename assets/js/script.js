@@ -70,6 +70,7 @@ $(document).ready(function() {
 		// clear previous data before append new one
 		$('#destSelect').empty();
 		$('#destSelect').append('<option value="" disabled selected>Select Destination</option>');
+		$('#trainList').empty();
 
 		var originCode = $('#originSelect').val();
 
@@ -106,6 +107,8 @@ $(document).ready(function() {
 
 	// ------------- Focus to date picker and show message to select date ---------------
 	$('#destSelect').change(function(){
+		// clear previous train list before append new
+		$('#trainList').empty();
 		$("#searchBar").removeClass('animated'); // remove animation, this cause a bug
 		$('#datepicker').focus();
 		Materialize.toast('Please choose the travel date', 2000);

@@ -252,15 +252,18 @@ $(document).ready(function() {
 	    })
 	    .done(function() {
 			// hide loading
-			$('.se-pre-con').fadeOut('slow');
+			$('.progress').fadeOut('slow');
 
 			Materialize.toast('Coach details loaded.', 2500, 'green');
 		})
 		.fail(function() {
 			// hide loading
-			$('.se-pre-con').fadeOut('slow');
+			$('.progress').fadeOut('slow');
 
 			Materialize.toast('Error! Failed to load contents.', 2500, 'red');
+
+			// open modal
+			$('#coachModal').modal('close');
 		});
 
 

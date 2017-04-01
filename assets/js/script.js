@@ -112,6 +112,9 @@ $(document).ready(function() {
 			Materialize.toast('Destinations loaded.', 2000);
 		})
 		.fail(function() {
+			// hide loading
+			$('.se-pre-con').fadeOut('slow');
+
 			Materialize.toast('Error! Failed to load contents.', 2000);
 		});
 	});
@@ -188,11 +191,17 @@ $(document).ready(function() {
 				Materialize.toast('Trains and Coaches loaded.', 2000);
 			})
 			.fail(function() {
+				// hide loading
+				$('.se-pre-con').fadeOut('slow');
+
 				Materialize.toast('Error! Failed to load contents.', 2000);
 			});
 		}
 		else
 		{
+			// hide loading
+			$('.se-pre-con').fadeOut('slow');
+
 			Materialize.toast('Error! Please select both Origin and Destination.', 2000);
 		}
 
@@ -245,6 +254,9 @@ $(document).ready(function() {
 			Materialize.toast('Coach details loaded.', 2000);
 		})
 		.fail(function() {
+			// hide loading
+			$('.se-pre-con').fadeOut('slow');
+			
 			Materialize.toast('Error! Failed to load contents.', 2000);
 		});
 

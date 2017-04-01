@@ -25,7 +25,7 @@ $(document).ready(function() {
 	// ---------------------- API PROCESSES ---------------------------
 
 	// ------------------ Populate Origin select box ------------------
-	$(function(){
+	setTimeout(function(){
 		// show loading
 		$('.se-pre-con').fadeIn('slow');
 
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 			Materialize.toast('Origins loaded.', 2000);
 	    });
-	});
+	}, 500); // set timeout to allow animation effects first, then execute this function
 	
 
 

@@ -65,6 +65,10 @@ $(document).ready(function() {
 
 			Materialize.toast('Error! Failed to load contents.', 2000);
 		});
+
+		// remove animation class after animation executes. this cause a bug to date picker
+		$("#searchBar").removeClass('animated'); 
+
 	}, 500); // set timeout to allow animation effects first, then execute this function
 	
 
@@ -123,7 +127,6 @@ $(document).ready(function() {
 	$('#destSelect').change(function(){
 		// clear previous train list before append new
 		$('#trainList').empty();
-		$("#searchBar").removeClass('animated'); // remove animation, this cause a bug
 		$('#datepicker').focus();
 		Materialize.toast('Please choose the travel date', 2000);
 	});
@@ -256,7 +259,7 @@ $(document).ready(function() {
 		.fail(function() {
 			// hide loading
 			$('.se-pre-con').fadeOut('slow');
-			
+
 			Materialize.toast('Error! Failed to load contents.', 2000);
 		});
 

@@ -3,6 +3,10 @@
 - This project mainly focus on the Frontend, which are using jQuery, Materialize Framework, Animate.css
 - All data are fetched directly from KTMB e-Ticket website, but this project is not using KTMB official API
 
+# Updates
+This project is down/not working anymore as for 20/11/2017 since KTMB website has changed the UI and remove old API links.
+See issues: https://github.com/afzafri/KTMB-Train-Ticket-Checker/issues/1
+
 # Installation
 - Local/Server
   - Clone this repo: ```git clone https://github.com/afzafri/KTMB-Train-Ticket-Checker.git```

@@ -41,8 +41,8 @@ $(document).ready(function() {
 		$('.se-pre-con').fadeIn('slow');
 
 		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/ondlist", function(data){
-          var data = data.groupBy('STATE');
-			     var states = "";
+      var data = data.groupBy('STATE');
+			var states = "";
 	        $.each(data, function(state, obj){
 	        	var up = "<optgroup label='"+state+"'>";
 	        	var options= "";
@@ -96,15 +96,16 @@ $(document).ready(function() {
 
 		var originCode = $('#originSelect').val();
 
-		$.getJSON("./api.php?option=GetDest&Origin="+originCode, function(data){
-			var states = "";
+		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/ondlist?origincode="+originCode, function(data){
+      var data = data.groupBy('STATE');
+      var states = "";
 	        $.each(data, function(state, obj){
 	        	var up = "<optgroup label='"+state+"'>";
 	        	var options= "";
 
 	        	for(var i=0;i<obj.length;i++)
 	        	{
-	        		options += "<option value='"+obj[i].Code+"'>"+obj[i].Nama+"</option>";
+	        		options += "<option value='"+obj[i].CODE+"'>"+obj[i].NAME+"</option>";
 	        	}
 
 	        	var down = "</optgroup>";

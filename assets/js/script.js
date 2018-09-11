@@ -169,10 +169,12 @@ $(document).ready(function() {
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();
+    var adult = 0; // for future features
+    var child = 0;
 
 		if(originCode != null || destCode != null)
 		{
-      var params = {Origin:originCode,Destination:destCode,DateJourney:date,Direction:"O",NoAdult:"1",Nochild:"0",TimeRange:"MO"};
+      var params = {Origin:originCode,Destination:destCode,DateJourney:date,Direction:"O",NoAdult:adult,Nochild:child};
       $.postJSON('https://eticket.ktmb.com.my/e-ticket/api/GETCONNECTINGV2', params, function(data) {
           // Do something with the request
           console.log(data);

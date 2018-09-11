@@ -169,28 +169,25 @@ $(document).ready(function() {
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();
-    var adult = 0; // for future features
+    // for future features, able to set number of passengers
+    var adult = 1;
     var child = 0;
 
 		if(originCode != null || destCode != null)
 		{
       var params = {Origin:originCode,Destination:destCode,DateJourney:date,Direction:"O",NoAdult:adult,Nochild:child};
-      $.postJSON('https://eticket.ktmb.com.my/e-ticket/api/GETCONNECTINGV2', params, function(data) {
-          // Do something with the request
-          console.log(data);
-      })
 
-			/*$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
+			$.postJSON('https://eticket.ktmb.com.my/e-ticket/api/GETCONNECTINGV2', params, function(data){
 				var sep = "<br><hr><br>";
 				var cards = "";
 				var delay = 0.4;
 
-		        $.each(data, function(index, obj){
+		        $.each(data['ConnectingList'][0]['TripList'], function(index, obj){
 
-		        	var arrival = obj.Arrival;
-		        	var departure = obj.Departure;
-		        	var trainnum = obj.TMT_TNM_NUMBER;
-		        	var trainname = obj.TNM_NAME;
+		        	var arrival = obj.ArrivalTime;
+		        	var departure = obj.DepartureTime;
+		        	var trainnum = obj.TrainNumber;
+		        	var trainname = obj.TrainName;
 
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
@@ -220,7 +217,7 @@ $(document).ready(function() {
 
 		        // append train list
 		        $('#trainList').append(sep+cards);
-		    })*/
+		    })
 			.done(function() {
 				// hide loading
 				$('.se-pre-con').fadeOut('slow');

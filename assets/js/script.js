@@ -24,26 +24,37 @@ $(document).ready(function() {
 
 	// ---------------------- API PROCESSES ---------------------------
 
+  // --------------------- JS Group By function ---------------------
+  // thanks to https://www.consolelog.io/group-by-in-javascript/
+  Array.prototype.groupBy = function(prop) {
+  return this.reduce(function(groups, item) {
+    const val = item[prop]
+    groups[val] = groups[val] || []
+    groups[val].push(item)
+    return groups
+  }, {})
+}
+
 	// ------------------ Populate Origin select box ------------------
 	setTimeout(function(){
 		// show loading
 		$('.se-pre-con').fadeIn('slow');
 
-		$.getJSON("./api.php?option=GetOrigin", function(data){
-			var states = "";
+		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/ondlist", function(data){
+          var data = data.groupBy('STATE');
+			     var states = "";
 	        $.each(data, function(state, obj){
 	        	var up = "<optgroup label='"+state+"'>";
 	        	var options= "";
 
 	        	for(var i=0;i<obj.length;i++)
 	        	{
-	        		options += "<option value='"+obj[i].Code+"'>"+obj[i].Nama+"</option>";
+	        		options += "<option value='"+obj[i].CODE+"'>"+obj[i].NAME+"</option>";
 	        	}
 
 	        	var down = "</optgroup>";
 
 	        	states += up+options+down;
-	            
 	        });
 
 	        // add additional options, temp fix for select box overlap under footer bug.
@@ -51,7 +62,7 @@ $(document).ready(function() {
 
 	        // append to select box
 	        $("#originSelect").append(states+addop);
-	    	$('#originSelect').material_select();
+	    	  $('#originSelect').material_select();
 	    })
 	    .done(function() {
 			// hide loading
@@ -67,10 +78,10 @@ $(document).ready(function() {
 		});
 
 		// remove animation class after animation executes. this cause a bug to date picker
-		$("#searchBar").removeClass('animated'); 
+		$("#searchBar").removeClass('animated');
 
 	}, 500); // set timeout to allow animation effects first, then execute this function
-	
+
 
 
 	// ------------------ Populate Destination select box ------------------
@@ -99,7 +110,7 @@ $(document).ready(function() {
 	        	var down = "</optgroup>";
 
 	        	states += up+options+down;
-	            
+
 	        });
 
 	        // add additional options, temp fix for select box overlap under footer bug.
@@ -152,12 +163,12 @@ $(document).ready(function() {
 				var delay = 0.4;
 
 		        $.each(data, function(index, obj){
-		        	
+
 		        	var arrival = obj.Arrival;
 		        	var departure = obj.Departure;
 		        	var trainnum = obj.TMT_TNM_NUMBER;
 		        	var trainname = obj.TNM_NAME;
-		        	
+
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
 									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
@@ -180,8 +191,8 @@ $(document).ready(function() {
 							'</div>';
 
 					// increase delay time for each cards
-					delay += 0.4; 
-		            
+					delay += 0.4;
+
 		        });
 
 		        // append train list
@@ -232,7 +243,7 @@ $(document).ready(function() {
 			var table = "";
 
 	        $.each(data, function(index, obj){
-	        	
+
 	        	var details = obj.Keterangan;
 	        	var coachpic = obj.Gambar;
 
@@ -244,7 +255,7 @@ $(document).ready(function() {
 					   		"</tr>"+
 	        				details+
 	        			"</table><br><hr><br>";
-	            
+
 	        });
 
 	        // append coach detail
@@ -267,7 +278,7 @@ $(document).ready(function() {
 		});
 
 
-		
+
 	});
 
 });

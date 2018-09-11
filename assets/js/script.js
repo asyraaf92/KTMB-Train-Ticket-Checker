@@ -15,7 +15,7 @@ $(document).ready(function() {
 	    },
 		selectMonths: true, // Creates a dropdown to control month
 		selectYears: 15, // Creates a dropdown of 15 years to control year
-		format: 'dd-mmm-yyyy',
+		format: 'dd/mm/yyyy',
 	});
 
 	// initialize modal
@@ -27,13 +27,27 @@ $(document).ready(function() {
   // --------------------- JS Group By function ---------------------
   // thanks to https://www.consolelog.io/group-by-in-javascript/
   Array.prototype.groupBy = function(prop) {
-  return this.reduce(function(groups, item) {
-    const val = item[prop]
-    groups[val] = groups[val] || []
-    groups[val].push(item)
-    return groups
-  }, {})
-}
+    return this.reduce(function(groups, item) {
+      const val = item[prop]
+      groups[val] = groups[val] || []
+      groups[val].push(item)
+      return groups
+    }, {})
+  }
+
+  $.postJSON = function(url, data, callback) {
+      return jQuery.ajax({
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      'type': 'POST',
+      'url': url,
+      'data': JSON.stringify(data),
+      'dataType': 'json',
+      'success': callback
+      });
+  };
 
 	// ------------------ Populate Origin select box ------------------
 	setTimeout(function(){
@@ -158,7 +172,13 @@ $(document).ready(function() {
 
 		if(originCode != null || destCode != null)
 		{
-			$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
+      var params = {Origin:originCode,Destination:destCode,DateJourney:date,Direction:"O",NoAdult:"1",Nochild:"0",TimeRange:"MO"};
+      $.postJSON('https://eticket.ktmb.com.my/e-ticket/api/GETCONNECTINGV2', params, function(data) {
+          // Do something with the request
+          console.log(data);
+      })
+
+			/*$.getJSON("./api.php?option=GetTrain&Origin="+originCode+"&Destination="+destCode+"&Date="+date, function(data){
 				var sep = "<br><hr><br>";
 				var cards = "";
 				var delay = 0.4;
@@ -198,7 +218,7 @@ $(document).ready(function() {
 
 		        // append train list
 		        $('#trainList').append(sep+cards);
-		    })
+		    })*/
 			.done(function() {
 				// hide loading
 				$('.se-pre-con').fadeOut('slow');
@@ -219,7 +239,6 @@ $(document).ready(function() {
 
 			Materialize.toast('Error! Please select both Origin and Destination.', 2500, 'red');
 		}
-
 	});
 
 

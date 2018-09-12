@@ -216,7 +216,7 @@ $(document).ready(function() {
 											'</table>'+
 										'</div>'+
 										'<div class="card-action">'+
-											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'"><i class="material-icons left">view_list</i>Show Coach</button>'+
+											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'" value2="'+coachcode+'"><i class="material-icons left">view_list</i>Show Coach</button>'+
 										'</div>'+
 									'</div>'+
 								'</div>'+
@@ -261,7 +261,8 @@ $(document).ready(function() {
 		var originCode = $('#originSelect').val();
 		var destCode = $('#destSelect').val();
 		var date = $('#datepicker').val();
-		var train = $(this).val();
+		var trainnum = $(this).val();
+    var coachcode = $(this).attr('value2');
 
 		// show progress bar
 		$('.progress').fadeIn('slow');
@@ -269,11 +270,11 @@ $(document).ready(function() {
 		// open modal
 		$('#coachModal').modal('open');
 
-		$.getJSON("./api.php?option=GetCoach&Origin="+originCode+"&Destination="+destCode+"&Date="+date+"&Train="+train, function(data){
+		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/LABELLIST?OriginCode="+originCode+"&DestinationCode="+destCode+"&DateJourney="+date+"&TrainNumber="+trainnum+"&CoachCode="+coachcode, function(data){
 
 			var table = "";
 
-	        $.each(data, function(index, obj){
+	        /*$.each(data, function(index, obj){
 
 	        	var details = obj.Keterangan;
 	        	var coachpic = obj.Gambar;
@@ -290,7 +291,8 @@ $(document).ready(function() {
 	        });
 
 	        // append coach detail
-	        $('#coachDetail').append(table);
+	        $('#coachDetail').append(table);*/
+          console.log(data);
 	    })
 	    .done(function() {
 			// hide loading
@@ -307,9 +309,6 @@ $(document).ready(function() {
 			// open modal
 			$('#coachModal').modal('close');
 		});
-
-
-
 	});
 
 });

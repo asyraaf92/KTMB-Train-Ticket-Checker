@@ -272,11 +272,11 @@ $(document).ready(function() {
 
 		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/LABELLIST?OriginCode="+originCode+"&DestinationCode="+destCode+"&DateJourney="+date+"&TrainNumber="+trainnum+"&CoachCode="+coachcode, function(data){
 
-			var table = "<table>"+
-                    "<tr>"+
+			var table = "<table class='striped centered'>"+
+                    "<thead><tr>"+
                       "<th>Coach Label</th>"+
                       "<th>Availability</th>"+
-                    "</tr>";
+                    "</tr></thead><tbody>";
 
 	        $.each(data, function(index, obj){
 
@@ -290,7 +290,7 @@ $(document).ready(function() {
 
 	        });
 
-          table += "</table>";
+          table += "</tbody></table>";
 
 	        // append coach detail
 	        $('#coachDetail').append(table);

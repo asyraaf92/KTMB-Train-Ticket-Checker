@@ -188,12 +188,14 @@ $(document).ready(function() {
 		        	var departure = obj.DepartureTime;
 		        	var trainnum = obj.TrainNumber;
 		        	var trainname = obj.TrainName;
+              var coachname = obj.CoachName;
+              var coachcode = obj.CoachCode;
 
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
 									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
 										'<div class="card-content">'+
-											'<span class="card-title"><b>('+trainnum+') '+trainname+'</b></span>'+
+											'<span class="card-title"><b>'+trainname+' ('+trainnum+') - '+coachname+' ('+coachcode+')</b></span>'+
 											'<table>'+
 												'<tr>'+
 													'<th>Departure</th><td> : </td><td>'+ departure + '</td>'+

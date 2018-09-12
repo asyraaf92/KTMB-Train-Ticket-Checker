@@ -1,6 +1,0 @@
-{
-  "name": "KTMB Train Ticket Checker",
-  "description": "Web based application for fetching the list of available KTMB Trains tickets",
-  "repository": "https://github.com/afzafri/KTMB-Train-Ticket-Checker",
-  "keywords": ["php", "javascript", "jquery", "fetcher", "ticket"]
-}

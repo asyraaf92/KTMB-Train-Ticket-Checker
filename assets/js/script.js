@@ -240,7 +240,7 @@ $(document).ready(function() {
 				// hide loading
 				$('.se-pre-con').fadeOut('slow');
 
-				Materialize.toast('Error! Failed to load contents.', 2500, 'red');
+				Materialize.toast('Error! Failed to load trains list. Please try again later.', 2500, 'red');
 			});
 		}
 		else

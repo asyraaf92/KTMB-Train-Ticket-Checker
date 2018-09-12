@@ -11,9 +11,7 @@
 # Installation
 - Local/Server
   - Clone this repo: ```git clone https://github.com/afzafri/KTMB-Train-Ticket-Checker.git```
-- Heroku
-  - [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
+  
 # Main Files
 - ```/assets/js/script.js``` - Javascript & jQuery codes for client side data processing
 

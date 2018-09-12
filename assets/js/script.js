@@ -186,10 +186,13 @@ $(document).ready(function() {
 
 		        	var arrival = obj.ArrivalTime;
 		        	var departure = obj.DepartureTime;
+              var duration = obj.Duration;
 		        	var trainnum = obj.TrainNumber;
 		        	var trainname = obj.TrainName;
               var coachname = obj.CoachName;
               var coachcode = obj.CoachCode;
+              var fareadult = obj.SeatFareAdult;
+              var farechild = obj.SeatFareChild;
 
 		        	cards += '<div class="row">'+
 								'<div class="col s12">'+
@@ -202,6 +205,13 @@ $(document).ready(function() {
 												'</tr>'+
 												'<tr>'+
 													'<th>Arrival</th><td> : </td><td>' + arrival + '</td>'+
+												'</tr>'+
+                        '<tr>'+
+													'<th>Duration</th><td> : </td><td>' + duration + '</td>'+
+												'</tr>'+
+                        '<tr>'+
+													'<th>Fare</th><td> : </td>'+
+                          '<td><ul><li>Adult <b>(' + fareadult + ')</b></li><li>Child <b>(' + farechild + ')</b></li></ul></td>'+
 												'</tr>'+
 											'</table>'+
 										'</div>'+

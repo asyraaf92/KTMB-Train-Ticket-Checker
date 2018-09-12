@@ -182,53 +182,60 @@ $(document).ready(function() {
 				var cards = "";
 				var delay = 0.4;
 
-		        $.each(data['ConnectingList'][0]['TripList'], function(index, obj){
+            if(data['ConnectingList'][0]['TripList'] != null)
+            {
+  		        $.each(data['ConnectingList'][0]['TripList'], function(index, obj){
 
-		        	var arrival = obj.ArrivalTime;
-		        	var departure = obj.DepartureTime;
-              var duration = obj.Duration;
-		        	var trainnum = obj.TrainNumber;
-		        	var trainname = obj.TrainName;
-              var coachname = obj.CoachName;
-              var coachcode = obj.CoachCode;
-              var fareadult = obj.SeatFareAdult;
-              var farechild = obj.SeatFareChild;
+  		        	var arrival = obj.ArrivalTime;
+  		        	var departure = obj.DepartureTime;
+                var duration = obj.Duration;
+  		        	var trainnum = obj.TrainNumber;
+  		        	var trainname = obj.TrainName;
+                var coachname = obj.CoachName;
+                var coachcode = obj.CoachCode;
+                var fareadult = obj.SeatFareAdult;
+                var farechild = obj.SeatFareChild;
 
-		        	cards += '<div class="row">'+
-								'<div class="col s12">'+
-									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
-										'<div class="card-content">'+
-											'<span class="card-title"><b>'+trainname+' ('+trainnum+') - '+coachname+' ('+coachcode+')</b></span>'+
-											'<table>'+
-												'<tr>'+
-													'<th>Departure</th><td> : </td><td>'+ departure + '</td>'+
-												'</tr>'+
-												'<tr>'+
-													'<th>Arrival</th><td> : </td><td>' + arrival + '</td>'+
-												'</tr>'+
-                        '<tr>'+
-													'<th>Duration</th><td> : </td><td>' + duration + '</td>'+
-												'</tr>'+
-                        '<tr>'+
-													'<th>Fare</th><td> : </td>'+
-                          '<td><ul><li>Adult <b>(' + fareadult + ')</b></li><li>Child <b>(' + farechild + ')</b></li></ul></td>'+
-												'</tr>'+
-											'</table>'+
-										'</div>'+
-										'<div class="card-action">'+
-											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'" value2="'+coachcode+'"><i class="material-icons left">view_list</i>Show Coach</button>'+
-										'</div>'+
-									'</div>'+
-								'</div>'+
-							'</div>';
+  		        	cards += '<div class="row">'+
+  								'<div class="col s12">'+
+  									'<div class="card animated fadeInLeft" style="animation-delay: '+delay+'s;">'+
+  										'<div class="card-content">'+
+  											'<span class="card-title"><b>'+trainname+' ('+trainnum+') - '+coachname+' ('+coachcode+')</b></span>'+
+  											'<table>'+
+  												'<tr>'+
+  													'<th>Departure</th><td> : </td><td>'+ departure + '</td>'+
+  												'</tr>'+
+  												'<tr>'+
+  													'<th>Arrival</th><td> : </td><td>' + arrival + '</td>'+
+  												'</tr>'+
+                          '<tr>'+
+  													'<th>Duration</th><td> : </td><td>' + duration + '</td>'+
+  												'</tr>'+
+                          '<tr>'+
+  													'<th>Fare</th><td> : </td>'+
+                            '<td><ul><li>Adult <b>(' + fareadult + ')</b></li><li>Child <b>(' + farechild + ')</b></li></ul></td>'+
+  												'</tr>'+
+  											'</table>'+
+  										'</div>'+
+  										'<div class="card-action">'+
+  											'<button class="waves-effect waves-light btn blue darken-2" id="showCoach" value="'+trainnum+'" value2="'+coachcode+'"><i class="material-icons left">view_list</i>Show Coach</button>'+
+  										'</div>'+
+  									'</div>'+
+  								'</div>'+
+  							'</div>';
 
-					// increase delay time for each cards
-					delay += 0.4;
+      					// increase delay time for each cards
+      					delay += 0.4;
 
-		        });
+  		        });
 
-		        // append train list
-		        $('#trainList').append(sep+cards);
+  		        // append train list
+  		        $('#trainList').append(sep+cards);
+            }
+            else
+            {
+              $('#trainList').append(sep+'<h4 class="header"><i>No trains available :(</i></h4>');
+            }
 		    })
 			.done(function() {
 				// hide loading

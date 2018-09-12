@@ -272,27 +272,28 @@ $(document).ready(function() {
 
 		$.getJSON("https://eticket.ktmb.com.my/e-ticket/api/LABELLIST?OriginCode="+originCode+"&DestinationCode="+destCode+"&DateJourney="+date+"&TrainNumber="+trainnum+"&CoachCode="+coachcode, function(data){
 
-			var table = "";
+			var table = "<table>"+
+                    "<tr>"+
+                      "<th>Coach Label</th>"+
+                      "<th>Availability</th>"+
+                    "</tr>";
 
-	        /*$.each(data, function(index, obj){
+	        $.each(data, function(index, obj){
 
-	        	var details = obj.Keterangan;
-	        	var coachpic = obj.Gambar;
+	        	var labelname = obj.LABEL_NAME;
+	        	var availability = obj.AVAILBILIITY;
 
-	        	table += "<table>"+
-	        				"<tr>"+
-					   			"<td colspan='3' style='text-align: center'>"+
-					   				"<img src='https://intranet.ktmb.com.my/e-ticket/Images/Coach/"+coachpic+"' class='responsive-img'/>"+
-					   			"</td>"+
-					   		"</tr>"+
-	        				details+
-	        			"</table><br><hr><br>";
+	        	table += "<tr>"+
+					   			     "<td>"+labelname+"</td>"+
+                       "<td>"+availability+"</td>"+
+					   		     "</tr>";
 
 	        });
 
+          table += "</table>";
+
 	        // append coach detail
-	        $('#coachDetail').append(table);*/
-          console.log(data);
+	        $('#coachDetail').append(table);
 	    })
 	    .done(function() {
 			// hide loading
